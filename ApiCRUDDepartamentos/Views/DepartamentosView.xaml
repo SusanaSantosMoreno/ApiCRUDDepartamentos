@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ApiCRUDDepartamentos.Views.DepartamentosView"
+    xmlns:local = "clr-namespace:ApiCRUDDepartamentos"
+    BindingContext="{Binding Source={x:Static local:App.ServiceLocator}
+    , Path=DepartamentosViewModel}"
+    x:Name="PageDepartamentosView">
+
+    <ContentPage.Content >
+        <StackLayout BackgroundColor="White">
+            <Label Text="Departamentos" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"
+                   FontSize="30" FontAttributes="Bold" TextColor="Black" Margin="20, 20, 20, 20"></Label>
+            <ScrollView>
+                <ListView ItemsSource="{Binding Departamentos}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Nombre}" TextColor="Black"
+                                           HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                                           Margin="20,0,0,0" LineBreakMode="MiddleTruncation"/>
+                                    <Button Text="Detalles" HorizontalOptions="End"
+                                            CommandParameter="{Binding .}"
+                                            Command="{Binding BindingContext.MostrarDetalles,
+                                                Source={x:Reference PageDepartamentosView}}"
+                                            BackgroundColor="White" TextColor="Black"/>
+                                    <Button Text="Editar" HorizontalOptions="End"
+                                            CommandParameter="{Binding .}"
+                                            Command="{Binding BindingContext.ModificarDepartamento,
+                                                Source={x:Reference PageDepartamentosView}}"
+                                            Margin="0,0,10,0" TextColor="Black"
+                                            BackgroundColor="White"/>
+                                </StackLayout>
+                                
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

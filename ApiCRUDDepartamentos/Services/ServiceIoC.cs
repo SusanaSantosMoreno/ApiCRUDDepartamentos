@@ -1,4 +1,5 @@
 ﻿using System;
+using ApiCRUDDepartamentos.ViewModels;
 using Autofac;
 
 namespace ApiCRUDDepartamentos.Services {
@@ -13,7 +14,12 @@ namespace ApiCRUDDepartamentos.Services {
         private void RegisterDependencies () {
             ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterType<ServiceDepartamentos>();
+            builder.RegisterType<DepartamentosViewModel>();
             this.container = builder.Build();
+        }
+
+        public DepartamentosViewModel DepartamentosViewModel {
+            get { return this.container.Resolve<DepartamentosViewModel>(); }
         }
     }
 }
