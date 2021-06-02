@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ApiCRUDDepartamentos.Views.EditDepartamentoView">
+    <ContentPage.Content>
+        <StackLayout Margin="10, 10, 10, 10">
+            <Label Text="Editar Departamento" HorizontalOptions="CenterAndExpand" 
+                   FontSize="20"/>
+
+            <Label Text="Id Departamento" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.IdDepartamento}"/>
+
+            <Label Text="Nombre" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.Nombre}"/>
+
+            <Label Text="Localidad" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.Localidad}"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Guardar Cambios" BackgroundColor="White" 
+                    TextColor="black" Command="{Binding EditarDepartamento}"/>
+                <Button Grid.Column="1" Text="Eliminar" BackgroundColor="White" 
+                    TextColor="black" Command="{Binding EliminarDepartamento}"/>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+    
+    

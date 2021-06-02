@@ -16,7 +16,7 @@ namespace ApiCRUDDepartamentos {
         public App () {
             InitializeComponent();
 
-            MainPage = new DepartamentosView();
+            MainPage = new MainDepartamentos();
         }
 
         protected override void OnStart () { }

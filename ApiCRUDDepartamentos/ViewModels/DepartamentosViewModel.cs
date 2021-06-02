@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ApiCRUDDepartamentos.Base;
 using ApiCRUDDepartamentos.Models;
 using ApiCRUDDepartamentos.Services;
+using ApiCRUDDepartamentos.Views;
 using Xamarin.Forms;
 
 namespace ApiCRUDDepartamentos.ViewModels {
@@ -15,6 +16,9 @@ namespace ApiCRUDDepartamentos.ViewModels {
         public DepartamentosViewModel(ServiceDepartamentos serv) {
             this.service = serv;
             Task.Run(async () => {
+                await this.CargarDepartamentosAsync();
+            });
+            MessagingCenter.Subscribe<DepartamentosViewModel>(this, "Reload", async (sender) => {
                 await this.CargarDepartamentosAsync();
             });
         }
@@ -38,17 +42,29 @@ namespace ApiCRUDDepartamentos.ViewModels {
         public Command MostrarDetalles {
             get { return new Command(async(Departamento) => {
                 Departamento departamento = Departamento as Departamento;
-                await Application.Current.MainPage.DisplayAlert("Alert",
-                    "Detalles -> " + departamento.Localidad, "OK");
+                DepartamentoViewModel viewModel =  App.ServiceLocator.DepartamentoViewModel;
+                viewModel.Departamento = departamento;
+
+                DetailsDepartamentoView view = new DetailsDepartamentoView();
+                view.BindingContext = viewModel;
+
+                await Application.Current.MainPage.Navigation.PushModalAsync(view);
             }); }
         }
 
-        public Command ModificarDepartamento {
-            get { return new Command(async (Departamento) => {
-                Departamento departamento = Departamento as Departamento;
-                await Application.Current.MainPage.DisplayAlert("Alert",
-                    "Modificar -> " + departamento.Localidad, "OK");
-            }); }
+        public Command EditarDepartamento {
+            get { 
+                return new Command(async (Departamento) => {
+                    Departamento departamento = Departamento as Departamento;
+                    DepartamentoViewModel viewModel = App.ServiceLocator.DepartamentoViewModel;
+                    viewModel.Departamento = departamento;
+                    EditDepartamentoView view = new EditDepartamentoView();
+                    view.BindingContext = viewModel;
+
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+
+                }); 
+            }
         }
 
     }

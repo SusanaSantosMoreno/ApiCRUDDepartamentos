@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ApiCRUDDepartamentos.Views.DetailsDepartamentoView">
+    <ContentPage.Content>
+        <StackLayout Margin="10, 10, 10, 10">
+            <Label Text="Departamento" FontSize="20" TextColor="Black" Margin="10, 10, 10, 10" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Departamento.IdDepartamento, StringFormat='Id de departamento : {0}'}" 
+                   VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextColor="Black"/>
+            <Label Text="{Binding Departamento.Nombre, StringFormat='Nombre de departamento : {0}'}" 
+                   VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextColor="Black"/>
+            <Label Text="{Binding Departamento.Localidad, StringFormat='Localidad de departamento : {0}'}" 
+                   VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+    
+    
+    

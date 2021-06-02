@@ -28,7 +28,7 @@
                                             BackgroundColor="White" TextColor="Black"/>
                                     <Button Text="Editar" HorizontalOptions="End"
                                             CommandParameter="{Binding .}"
-                                            Command="{Binding BindingContext.ModificarDepartamento,
+                                            Command="{Binding BindingContext.EditarDepartamento,
                                                 Source={x:Reference PageDepartamentosView}}"
                                             Margin="0,0,10,0" TextColor="Black"
                                             BackgroundColor="White"/>

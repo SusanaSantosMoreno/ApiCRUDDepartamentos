@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ApiCRUDDepartamentos.Views.InsertDepartamentoView"
+             xmlns:local ="clr-namespace:ApiCRUDDepartamentos"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=DepartamentoViewModel}">
+    <ContentPage.Content>
+        <StackLayout Margin="10, 10, 10, 10">
+            <Label Text="Insertar Departamento" HorizontalOptions="CenterAndExpand" 
+                   FontSize="20" TextColor="Black" Margin="10, 10, 10, 10"/>
+
+            <Label Text="Id Departamento" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.IdDepartamento}"/>
+
+            <Label Text="Nombre" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.Nombre}"/>
+
+            <Label Text="Localidad" HorizontalOptions="StartAndExpand"/>
+            <Entry Text="{Binding Departamento.Localidad}"/>
+
+            <Button Grid.Column="0" Text="Guardar Cambios" BackgroundColor="white" 
+                    TextColor="black" Command="{Binding InsertarDepartamento}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

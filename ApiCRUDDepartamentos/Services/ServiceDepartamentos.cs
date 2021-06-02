@@ -75,7 +75,7 @@ namespace ApiCRUDDepartamentos.Services {
 
 
         public async Task DeleteDepartamentoAsync (int idDepartamento) {
-            String request = "api/departamentos" + idDepartamento;
+            String request = "api/departamentos/" + idDepartamento;
             Uri uri = new Uri(this.url + request);
 
             using(HttpClient client = new HttpClient()) {
